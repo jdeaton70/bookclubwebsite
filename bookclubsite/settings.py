@@ -27,7 +27,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
+DEBUG = True
+DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", False) == "True"
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
@@ -81,24 +82,24 @@ WSGI_APPLICATION = 'bookclubsite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-if DEVELOPMENT_MODE is True:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
         }
     }
-elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
-    DATABASES = {
-        "default": {
-            'ENGINE': 'django.db.backends.postgresql.psycopg2',
-            'NAME': 'familybookclub',
-            'USER': 'admin',
-            'PASSWORD': 'fbc2025',
-            'HOST': 'localhost',
-            'PORT': ''
-        }
-    }
+#elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
+#    DATABASES = {
+#        "default": {
+#            'ENGINE': 'django.db.backends.postgresql.psycopg2',
+#            'NAME': 'familybookclub',
+#            'USER': 'admin',
+#            'PASSWORD': 'fbc2025',
+#            'HOST': 'localhost',
+#            'PORT': ''
+#        }
+#    }
 
 
 # Password validation
@@ -136,7 +137,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static/")]
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
