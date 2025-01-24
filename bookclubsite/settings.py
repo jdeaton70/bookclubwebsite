@@ -33,7 +33,8 @@ DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", False) == "True"
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost", 
-    "44.236.217.229"
+    "44.236.217.229",
+    "44.228.25.208"
     ]
 
 # Application definition
