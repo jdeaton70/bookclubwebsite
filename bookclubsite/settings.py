@@ -83,23 +83,23 @@ WSGI_APPLICATION = 'bookclubsite.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 
+# DATABASES = {
+ #   "default": {
+ #       "ENGINE": "django.db.backends.sqlite3",
+ #       "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+ #       }
+ #   }
+
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-        }
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'familybookclub',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'localhost',
+        'PORT': ''
     }
-#elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
-#    DATABASES = {
-#        "default": {
-#            'ENGINE': 'django.db.backends.postgresql.psycopg2',
-#            'NAME': 'familybookclub',
-#            'USER': 'admin',
-#            'PASSWORD': 'fbc2025',
-#            'HOST': 'localhost',
-#            'PORT': ''
-#        }
-#    }
+}
 
 
 # Password validation
@@ -137,7 +137,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static/")]
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
