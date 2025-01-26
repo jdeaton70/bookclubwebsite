@@ -95,8 +95,8 @@ DATABASES = {
     "default": {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'familybookclub',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'USER': 'admin',
+        'PASSWORD': '98bhnhybgzK!',
         'HOST': 'localhost',
         'PORT': ''
     }
